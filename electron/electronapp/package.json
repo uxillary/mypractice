@@ -1,0 +1,22 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "electronjs.org/docs/latest/tutorial/tutorial-first-app",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "\"test\" : \"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "mypractice\\electron"
+  },
+  "keywords": [
+    "[Electron]"
+  ],
+  "author": "adamski @uxillary",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^26.2.4"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "sample-electron-app",
+  "version": "1.0.0",
+  "description": "A sample app using Electronjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "mypractice"
+  },
+  "keywords": [
+    "[HTML]",
+    "[Electron]",
+    "[JavaScript]",
+    "[CSS]",
+    "[Practice]"
+  ],
+  "author": "adamski @uxillary",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^26.2.4"
+  }
+}
