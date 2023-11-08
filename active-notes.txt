@@ -3,6 +3,11 @@ fruit blast
 eye of newt
 ashes
 
+top - orange
+
+bottom - purple
+skull - yellow
+
 RFD!
 https://kdp.amazon.com/en_US/title-setup/paperback/new/details?ref_=cr_ti
 -----------
