@@ -1,0 +1,35 @@
+Forked repo
+
+set
+git remote add upstream https://github.com/repo/url.git
+
+
+check
+git remote -v
+
+
+fetch latest
+git fetch upstream
+
+
+switch to main branch
+git checkout main
+
+
+merge changes to your fork
+git merge upstream/main
+
+
+push updated brank to GitHub fork
+git push origin main
+
+
+if working on a feature branch, always update main first then:
+git checkout your-feature-branch
+git rebase main
+
+this keeps your branch up-to-date and clean before PR.
+
+
+
+"Please make important changes towards making this website compliant with Google AdSense, W3C, improve SEO and overall quality."

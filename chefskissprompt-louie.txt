@@ -1,0 +1,92 @@
+You are building a production-ready Astro + React + Tailwind website for a luxury bridal makeup artist named “Louie Graham”. 
+Goal: ship a fast, image-led brochure site, deployable to Cloudflare Pages, with a CF Worker handling form submissions.
+
+### Tech:
+- Astro latest with React integration, TailwindCSS, @astrojs/image, @astrojs/sitemap.
+- Astro Content Collections for: pages, services, testimonials, portfolio items.
+- Cloudflare adapter for Astro. One Cloudflare Worker in /functions for POST /api/contact.
+
+### Project bootstrap:
+1) Create a new Astro project with Tailwind and React.
+2) Configure `astro.config.mjs` for Cloudflare Pages adapter and image integration.
+3) Add a `content/` folder with collections:
+   - `pages` (mdx): home, about, services, experience, testimonials, contact, faq.
+   - `services` (md): slug, title, summary, duration, includes[], optionalPrice.
+   - `portfolio` (md): title, categories[], coverImage, gallery[].
+   - `testimonials` (md): name, quote, eventLocation, date.
+4) Add a CF Worker at `/functions/api/contact.ts` that:
+   - Validates fields (name, email, date, location, message, services[]).
+   - Rate-limits by IP (KV).
+   - Sends an email via MailChannels (or logs to console in dev).
+   - Returns JSON {ok:true} or {ok:false,error}.
+
+### Pages & components:
+- Layouts: `BaseLayout.astro` (SEO, JSON-LD helpers), `PageHeader.astro` (eyebrow, h1, intro).
+- Components:
+  - `Hero.astro` (image-left variant, CTA buttons "Check availability", "View services").
+  - `ValueTiles.astro` (3 tiles, minimal icons).
+  - `ServiceCards.astro` (maps content/services).
+  - `ExperienceSteps.astro` (numbered timeline with sticky sidebar CTA).
+  - `MasonryGallery.tsx` (CSS columns; lightbox modal).
+  - `TestimonialSlider.tsx` (progress dots, autoplay).
+  - `ContactForm.tsx` (client-side validation, fetch to /api/contact, success/fail states, no popups).
+  - `LogoWall.astro` (optional “Featured In”).
+  - `InstagramStrip.tsx` (SSR-safe placeholder grid + link out).
+- Styles: Tailwind preset for luxury look (letter-spacing on headings, generous leading, muted palette).
+- Fonts: Heading serif (e.g., “Playfair Display” or “Cormeor”), body sans (e.g., “Inter”).
+- Colors: sand `#efe9e4`, ivory `#f8f6f3`, charcoal `#222`, soft gold accent `#c8b58b`, on-hover underlines.
+
+### Content seed (from client brochure):
+Use these as initial markdown entries.
+
+About (pages/about.mdx):
+- Pull “With over five years… Regional Makeup Artist for Chanel within Edinburgh… calm, professional… timeless, elegant looks.”
+- Tone: confident, warm, editorial.
+
+Services (content/services/*.md):
+- Bridal Trial: summary from brochure; 1.5–2 hours; purpose = explore & perfect the look.
+- Wedding Day – Bride: bespoke, long-lasting, photo-ready; premium products.
+- Bridal Party: bridesmaids/mothers; harmonised with bridal aesthetic.
+- Full-Day Service (Optional): touch-ups or second look for evening.
+- Destination Weddings: UK + international; travel & accommodation covered by client; coordinated planning.
+
+Bridal Experience (pages/experience.mdx):
+- 5 steps: Initial Enquiry & Booking; The Trial; Wedding Morning; Bridal Party; Optional Extras (full-day service, touch-up kit, travel).
+- Add sticky CTA “Check availability” linking to /contact.
+
+Contact (pages/contact.mdx):
+- Email: bridal@louiedoesmakeup.com
+- Form fields: name, email, date, venue/location, party size, services interested in, message.
+
+Home (pages/index.mdx):
+- Hero with headline: “Timeless, camera-ready bridal makeup.”
+- Subhead: “Editorial polish, calm morning energy.”
+- Tiles linking to Services / Portfolio / Experience.
+- LogoWall placeholder (future press/brand).
+
+Portfolio:
+- Create 6 sample items with placeholder images and categories [Bridal, Occasion, Fashion].
+
+Testimonials:
+- Create a page that reads the collection and displays 3–6 quotes (seed with short placeholders).
+
+### UX details:
+- Reduce cognitive load—copy length like dawnartists.com sections, clean blocks, strong whitespace.
+- Buttons: pill shape, subtle border, no heavy fills; underline-on-hover links.
+- Image handling: preload hero; lazy-load gallery; focus-visible states.
+- Motion: tiny fade/slide on tiles and galleries; prefers-reduced-motion respected.
+
+### SEO & Schema:
+- Add JSON-LD: Person (Louie Graham), Service (MakeupApplication), LocalBusiness where relevant.
+- Meta defaults; OG images generated per page.
+- robots.txt + sitemap.xml.
+
+### Build scripts:
+- `dev`, `build`, `preview`, `cf:pages` (wrangler config for local test).
+
+### Deliverables:
+- A runnable project with all pages, seeded content, and CF Worker mock that logs form submissions.
+- Include clear README: Cloudflare Pages deploy, environment vars for Worker (KV binding, MailChannels).
+- Keep components small, accessible, and visually consistent.
+
+Now generate the complete project structure and example files with realistic placeholder images and markdown content per above.

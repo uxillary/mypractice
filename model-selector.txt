@@ -1,0 +1,85 @@
+
+2. API Key Entry (Settings)
+Let users enter a key through the GUI and store it securely
+
+4. Prompt/Response History
+Log previous prompts and answers (in JSON or local DB)
+
+5. Copy to Clipboard
+Button to copy the output instantly
+
+6. Drag-and-Drop File Input
+Let users drop .py, .txt, or .md files and auto-fill the prompt
+
+Clipboard Button
+Add a “📋 Copy” button under the output box to quickly copy responses
+
+History Log (optional JSON or text)
+Save each prompt + response with timestamp
+
+Theme toggle or light mode option
+
+Auto-save last prompt on restart
+Save the input box content to a temp file or cache
+
+Voice prompt or text-to-speech response
+---
+
+🔨 1. Local File Awareness (repo mode)
+Let the assistant:
+
+✅ Read from selected files or directories
+✅ Display a list of functions/classes to analyze or refactor
+✅ Offer dropdowns or checkboxes to “include files in prompt”
+
+💡 How: Use os.walk() to index the repo, preview contents, allow selection, then stitch those into your prompt intelligently.
+
+📦 2. Smart PR + Git Integration
+Codex can:
+Generate commit messages (✅ already doing this!)
+- Next: Add buttons to:
+git add .
+Generate + run git commit -m "..." from prompt
+git push (optionally)
+Generate full pull request description
+💡 Optional: Call gh CLI commands from Python to create PRs programmatically.
+
+📂 3. Multi-File Suggestion Mode
+Use a textarea or panel that displays multiple generated file contents. Then:
+
+Copy to clipboard
+Save each file locally
+Add them directly to a temp repo
+
+Think: “create a new config.py, main.py, and utils.py from this description” → show all 3 with save buttons.
+
+🧠 4. Persistent File Summary Cache
+The web Codex does "context fetching" — you can replicate that locally by:
+Creating a summary of every file (via GPT)
+Caching those summaries
+Feeding summaries + filenames instead of full files when context is tight
+
+📈 5. Cost Tracking per Session / Repo
+You're already estimating cost/token use. Next:
+Add session-level totals
+Let users see: “This repo session cost you $0.13 and 1,200 tokens”
+
+🧪 6. Superpower: Plugin Mode or Tool Menu
+Offer these menu items:
+
+✅ Explain this repo
+✅ Show dependencies
+✅ Create a README.md
+✅ Auto-generate unit tests
+✅ Convert to another language (Python → JS)
+✅ Create .env.example or .dockerfile
+
+These are all things web Codex can do, but you’ll make them one-click and local.
+
+🧠 7. Advantage You’ll Have
+Offline or minimal browser dependency
+More control over flow and customization
+Better token transparency
+Expandable, personal, open-source
+Tailored to your dev style — not just GitHub’s
+
